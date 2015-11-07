@@ -8,11 +8,34 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
   <div class ="container">
     <ul class="nav nav-tabs">
-      <li><%= link_to "Home", welcome_index_path %></li>
+      <li><%= link_to "Home", root_path %></li>
       <li><%= link_to "About", welcome_about_path %></li>
+
+      <div class="pull-right user-info">
+        <% if current_user %>
+          <%= link_to "Profile", users_show_path(current_user) %> <br/>
+          <%= link_to "Sign Out", destroy_user_session_path(current_user), method: :delete %>
+        <% else %>
+          <%= link_to "Sign Up", new_user_registration_path %>
+          <%= link_to "Sign In", new_user_session_path %>
+        <% end %>
+      </div>
     </ul>
+
+    <% flash.each do |name,msg| %>
+      <div class="flash">
+        <% if flash[name] %>
+          <div class="alert alert-info">
+            <button type="button" class="color" data-dismess="alert" >&times;</button>
+            <%= flash[name] %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
 
 <%= yield %>
 </div>
