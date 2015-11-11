@@ -14,31 +14,39 @@
       <li><%= link_to "Home", root_path %></li>
       <li><%= link_to "About", welcome_about_path %></li>
 
-      <div class="pull-right user-info">
-        <% if current_user %>
-          <%= link_to "Profile", users_show_path(current_user) %> <br/>
-          <%= link_to "Sign Out", destroy_user_session_path(current_user), method: :delete %>
+      <div class="nav nav-tabs pull-right">
+        <% if user_signed_in? %>
+          <li><%= link_to "Edit Profile", edit_user_registration_path, :class => 'navbar-link' %></li>
+          <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'navbar-link' %></li>
         <% else %>
-          <%= link_to "Sign Up", new_user_registration_path %>
-          <%= link_to "Sign In", new_user_session_path %>
+          <li><%= link_to "Sign Up", new_user_registration_path, :class => 'navbar_link' %></li>
+          <li><%= link_to "Sign In", new_user_session_path, :class => 'navbar-link' %></li>
         <% end %>
       </div>
     </ul>
 
-    <% flash.each do |name,msg| %>
-      <div class="flash">
-        <% if flash[name] %>
-          <div class="alert alert-info">
-            <button type="button" class="color" data-dismess="alert" >&times;</button>
-            <%= flash[name] %>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
+    <div class="flash">
+      <% if flash[:notice] %>
+        <div class="alert alert-success">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <%= flash[:notice] %>
+        </div>
+      <% elsif flash[:error] %>
+        <div class="alert alert-danger">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <%= flash[:error] %>
+        </div>
+      <% elsif flash[:alert] %>
+        <div class="alert alert-warning">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
+    </div>
 
 
-<%= yield %>
-</div>
+    <%= yield %>
+  </div>
 
 </body>
 </html>

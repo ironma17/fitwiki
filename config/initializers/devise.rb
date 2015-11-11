@@ -1,18 +1,16 @@
-# Use this hook to configure devise mailer, warden hooks and so forth.
-# Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` on Rails 4+ applications as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '569d113eda94c67c99d8096219e033810e1070bede8a4bd9c2e88e6e3203c76eb522a5d0c722ac0ab5a3d4d6e21fa255e1a3a35264a8990a2cfb39607f8834a7'
+  # config.secret_key = 'df4550c25b0ba9515d2a75444435ae93c7bedd329d8e8a05516f9c401a84c29673343d4d36f9cde04e17d44700ea0700fb19f63d80ed04c7534fe585fc03fd97'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = 'admin@fitwiki.com'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -99,7 +97,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = '42803922811bb04756974c82f3db326618d1592ca8107c166151838f42bc79234e3314cb273a6e9694b3e8134fb1064781aa87195116e5499df1cb05ec7b07bc'
+  # config.pepper = 'e9e6e20ee929c5374e4090da806adf7baa90c8a2c9da3577ca85e3f062e9ff9e143ffd969759705e4612cc8146f26cfe566aeda4f083fe3047945aa19664091a'
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -115,7 +113,7 @@ Devise.setup do |config|
   # their account can't be confirmed with the token any more.
   # Default is nil, meaning there is no restriction on how long a user can take
   # before confirming their account.
-  # config.confirm_within = 3.days
+  config.confirm_within = 2.days
 
   # If true, requires any email changes to be confirmed (exactly the same way as
   # initial account confirmation) to be applied. Requires additional unconfirmed_email
@@ -147,7 +145,7 @@ Devise.setup do |config|
   # Email regex used to validate email formats. It simply asserts that
   # one (and only one) @ exists in the given string. This is mainly
   # to give user feedback and not to assert the e-mail validity.
-  # config.email_regexp = /\A[^@]+@[^@]+\z/
+  config.email_regexp = /\A[^@]+@[^@]+\z/
 
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
